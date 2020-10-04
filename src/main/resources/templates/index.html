@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Booking System</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <div class="container my-2">
+        <h1>List untuk Penerbangan</h1>
+
+        <a th:href="@{/showNewPenerbanganForm}" class="btn btn-primary btn-sm mb-3"> Add Penerbangan </a>
+
+        <table border="1" class="table table-striped table-responsive-md">
+            <thead>
+                <tr>
+                    <th>Kota Asal</th>
+                    <th>Kota Tujuan</th>
+                    <th>Tangal Keberangkatan</th>
+                    <th>Tanggal Kedatangan</th>
+                    <th>Jumlah Penumpang</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="penerbangan : ${listpenerbangan}">
+                    <td th:text="${penerbangan.namaAsal}"></td>
+                    <td th:text="${penerbangan.namaTujuan}"></td>
+                    <td th:text="${penerbangan.tanggalKeberangkatan}"></td>
+                    <td th:text="${penerbangan.tanggalKedatangan}"></td>
+                    <td th:text="${penerbangan.jumlah}"></td>
+                    <td> 
+                    	<a th:href="@{/showFormForUpdate/{id}(id=${penerbangan.id})}" class="btn btn-primary">Update</a>
+                        <a th:href="@{/deletePenerbangan/{id}(id=${penerbangan.id})}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
